@@ -20,12 +20,13 @@ public class Student {
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
         return Objects.equals(firstName, student.firstName) &&
-                Objects.equals(lastName, student.lastName);
+                Objects.equals(lastName, student.lastName) &&
+                Objects.equals(phoneNumber, student.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return Objects.hash(firstName, lastName, phoneNumber);
     }
 
     public String getFirstName() {
@@ -54,6 +55,10 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getFaculty() {
+        return Faculty;
     }
 
     @Override

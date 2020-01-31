@@ -7,10 +7,18 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         ArrayList<Student> students=getStudentList();
-        Map<Student,Integer> studentIntegerMap=MapService.countStudentOccurences(students);
-        for(Map.Entry<Student,Integer> entrySet:studentIntegerMap.entrySet()){
-            System.out.printf("Key: %s,\tValue: %s\n", entrySet.getKey(),entrySet.getValue());
+        Map<String,Integer> studentIntegerMap=MapService.getStudentsMap(students);
+        printMap(studentIntegerMap);
+        Map<String,Integer> facultyIntegerMap=MapService.getFacultyMap(students);
+        printMap(facultyIntegerMap);
+
+    }
+
+    private static void printMap(Map<String, Integer> studentIntegerMap) {
+        for(Map.Entry<String,Integer> entrySet:studentIntegerMap.entrySet()){
+            System.out.printf("Key: %s, Value: %s\n", entrySet.getKey(),entrySet.getValue());
         }
+
     }
 
     private static ArrayList<Student> getStudentList() {

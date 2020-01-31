@@ -5,17 +5,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapService {
-    public static Map<Student,Integer> countStudentOccurences(ArrayList<Student> students){
-        Map<Student,Integer> studAndOccurences=new HashMap<>();
+    public static Map<String,Integer>  getStudentsMap(ArrayList<Student> students){
+        Map<String,Integer> studentsMap =new HashMap<>();
         for (Student student : students) {
-            if(studAndOccurences.containsKey(student)) {
-                int count = studAndOccurences.get(student);
-                studAndOccurences.put(student, count + 1);
+            String fullName=student.getFirstName()+" "+student.getLastName();
+            if(studentsMap.containsKey(fullName)) {
+                int count = studentsMap.get(fullName);
+                studentsMap.put(fullName, count + 1);
             }else{
-                studAndOccurences.put(new Student(student.getFirstName(),student.getLastName()),1);
+                studentsMap.put(fullName,1);
             }
         }
-        return studAndOccurences;
+        return studentsMap;
+    }
+    public static Map<String,Integer> getFacultyMap(ArrayList<Student> students){
+        Map<String,Integer> facultyMap =new HashMap<>();
+        for (Student student : students) {
+            String faculty=student.getFaculty();
+            if(facultyMap.containsKey(faculty)) {
+                int count = facultyMap.get(faculty);
+                facultyMap.put(faculty, count + 1);
+            }else{
+                facultyMap.put(faculty,1);
+            }
+        }
+        return facultyMap;
+
     }
 
 }
