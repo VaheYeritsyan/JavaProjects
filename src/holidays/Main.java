@@ -4,10 +4,36 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Month january=Month.JANUARY;
-        System.out.println("Is January 5 a holiday: "+january.isHoliday(5));
-        System.out.println("Is January 6 a holiday: "+january.isHoliday(6));
-        System.out.printf("January has %d days\n", january.getMonthLength());
-        System.out.printf("January has %d holidays\n", january.getHolidayCount());
+        Month april=Month.APRIL;
+        printMonthHolidays(april);
+        Month march=Month.MARCH;
+        System.out.printf("%s has %d days\n",
+                march.getShortname(),march.getMonthLength());
+        printMontNames();
+        isHoliday(march,8);
+        isHoliday(march,21);
+
     }
+
+    private static void printMontNames() {
+        System.out.println("Printing month names");
+        for (Month month : Month.values()) {
+            System.out.printf("%s ",month.getShortname());
+        }
+        System.out.println();
+    }
+
+    private static void printMonthHolidays(Month month){
+        System.out.format("Printing %s holidays\n",month.getShortname());
+        for (Integer holidayDay : month.getHolidayDays()) {
+            System.out.printf("%s %d\t",month.getShortname(),holidayDay);
+        }
+        System.out.println();
+    }
+
+    private static void isHoliday(Month month, int day){
+        System.out.printf("%s %d is %s\n", month.getShortname(),day,
+                (month.isHoliday(day)?"holiday":"not holiday"));
+    }
+
 }

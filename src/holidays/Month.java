@@ -6,7 +6,7 @@ import java.util.*;
 public enum Month {
     JANUARY("Jan",31,1,6,28),
     FEBRUARY("Feb",28,1,5,23,24),
-    MARCH("Mar",31,1,8,21),
+    MARCH("Mar",31,1,8,23),
     APRIL("Apr",30,5,7,16,25),
     MAY("May",31,8,9,26,28),
     JUNE("June",30,4,12,29,30),
@@ -34,7 +34,7 @@ public enum Month {
                 holidayDays.add(holiday);
             }
         }
-        initIsHoliday();
+        Collections.sort(holidayDays);
 
 
     }
@@ -43,18 +43,12 @@ public enum Month {
         return day>0&&day<=monthLength;
     }
 
-    private void initIsHoliday() {
-        isHoliday=new boolean[monthLength+1];
-        for (Integer holidayDay : holidayDays) {
-            isHoliday[holidayDay]=true;
-        }
-    }
 
     public boolean isHoliday(int day){
         if(!checkIfInRange(day)){
             return false;
         }
-        return isHoliday[day];
+        return holidayDays.contains(day);
     }
 
     public int getHolidayCount(){
@@ -65,8 +59,13 @@ public enum Month {
         return monthLength;
     }
 
+    public String getShortname() {
+        return shortname;
+    }
 
-
+    public ArrayList<Integer> getHolidayDays() {
+        return holidayDays;
+    }
 }
 
 
