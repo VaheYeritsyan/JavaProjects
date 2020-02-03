@@ -6,12 +6,47 @@ public class Student {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String Faculty;
+    private String faculty;
     private int age;
 
-    public Student(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+
+    public Student(Builder builder) {
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.phoneNumber = builder.phoneNumber;
+        this.faculty = builder.faculty;
+    }
+
+    public static class Builder {
+        private final String firstName;
+        private final String lastName;
+        private String phoneNumber;
+        private String faculty;
+        private int age;
+
+        public Builder(String firstName, String lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+
+        public Builder setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+            return this;
+        }
+
+        public Builder setFaculty(String faculty) {
+            this.faculty = faculty;
+            return this;
+        }
+
+        public Builder setAge(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public Student build() {
+            return new Student(this);
+        }
     }
 
     @Override
@@ -37,28 +72,8 @@ public class Student {
         return lastName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setFaculty(String faculty) {
-        Faculty = faculty;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public String getFaculty() {
-        return Faculty;
+        return faculty;
     }
 
     @Override
