@@ -33,7 +33,7 @@ public class Main {
     }
 
     private static Student createStudent(String firstName, String lastName, int age, String number, String faculty) {
-        return new Student.Builder(firstName,lastName)
+        return new Student.Builder(firstName, lastName)
                 .setAge(age).setPhoneNumber(number).setFaculty(faculty).build();
 
     }

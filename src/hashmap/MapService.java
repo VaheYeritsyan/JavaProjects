@@ -31,7 +31,6 @@ public class MapService {
             }
         }
         return facultyMap;
-
     }
 
 }
